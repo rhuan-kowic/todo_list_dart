@@ -26,6 +26,7 @@ class ListaDeTarefas {
     if (_tarefas.isEmpty) {
       print("Nenhuma tarefa cadastrada.");
     } else {
+      ordenarPorDescricao();
       for (var tarefa in _tarefas) {
         print(tarefa);
       }
