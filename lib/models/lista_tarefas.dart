@@ -35,4 +35,8 @@ class ListaDeTarefas {
   void ordenarPorDescricao() {
     _tarefas.sort((a, b) => a.getDescricao().compareTo(b.getDescricao()));
   }
+
+  List<Tarefa> getListaDeTarefas() {
+    return _tarefas;
+  }
 }
