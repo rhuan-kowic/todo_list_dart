@@ -1,8 +1,9 @@
 import 'package:todo_list_dart/utils.dart';
 
 import 'models/lista_tarefas.dart';
+import 'dart:async';
 
-void execute() {
+Future<void> execute() async {
   final lista = ListaDeTarefas();
 
   while (true) {
@@ -75,5 +76,7 @@ void execute() {
       default:
         print('Opção inválida. Tente novamente.');
     }
+
+    await Future.delayed(Duration(seconds: 2));
   }
 }

@@ -3,6 +3,7 @@ import 'dart:io';
 
 void exibirMenu() {
   print('''
+
 ***********************************************
 *               Lista de Tarefas            *
 ***********************************************
@@ -12,8 +13,7 @@ void exibirMenu() {
 * 4. Remover Tarefa                         *
 * 5. Editar Tarefa                          *
 * 6. Sair                                   *
-***********************************************
-''');
+***********************************************''');
 }
 
 String lerConsole(String texto) {
