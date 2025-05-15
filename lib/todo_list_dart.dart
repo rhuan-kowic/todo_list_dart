@@ -1,27 +1,19 @@
-import 'dart:convert';
+import 'package:todo_list_dart/utils.dart';
 
 import 'models/lista_tarefas.dart';
-import 'dart:io';
 
 void execute() {
   final lista = ListaDeTarefas();
 
   while (true) {
-    print('''
-Escolha uma opção:
-1. Adicionar Tarefa
-2. Listar Tarefas
-3. Marcar Tarefa como Concluída
-4. Remover Tarefa
-5. Editar Tarefa
-6. Sair
-''');
-    var line = stdin.readLineSync(encoding: utf8);
-    switch (line) {
+    exibirMenu();
+
+    final opcao = lerConsole('');
+    switch (opcao) {
       case '1':
-        print("Digite a descrição da tarefa:");
-        final descricao = stdin.readLineSync(encoding: utf8);
-        if (descricao != null && descricao.isNotEmpty) {
+        final descricao = lerConsole("Digite a descrição da tarefa:");
+
+        if (descricao.isNotEmpty) {
           lista.adicionarTarefa(descricao);
         } else {
           print('Descrição inválida.');
@@ -34,8 +26,10 @@ Escolha uma opção:
         break;
 
       case '3':
-        print("Digite o índice da tarefa a ser marcada como concluída");
-        final input = int.tryParse(stdin.readLineSync(encoding: utf8) ?? '');
+        final input = lerConsoleInt(
+          "Digite o índice da tarefa a ser marcada como concluída",
+        );
+
         if (input != null) {
           final index = input;
           if (index >= 0 && index < lista.getListaDeTarefas().length) {
@@ -46,8 +40,10 @@ Escolha uma opção:
         }
         break;
       case '4':
-        print("Digite o índice da tarefa a ser removida:");
-        final index = int.tryParse(stdin.readLineSync(encoding: utf8) ?? '');
+        final index = lerConsoleInt(
+          "Digite o índice da tarefa a ser removida:",
+        );
+
         if (index != null && index >= 0) {
           lista.removerTarefa(index);
         } else {
@@ -56,12 +52,12 @@ Escolha uma opção:
         break;
 
       case '5':
-        print('Digite o índice da tarefa a ser editada:');
-        final index = int.tryParse(stdin.readLineSync(encoding: utf8) ?? '');
+        final index = lerConsoleInt('Digite o índice da tarefa a ser editada:');
+
         if (index != null && index >= 0) {
-          print("Digite a descrição da tarefa:");
-          final descricao = stdin.readLineSync(encoding: utf8);
-          if (descricao != null && descricao.isNotEmpty) {
+          final descricao = lerConsole("Digite a descrição da tarefa:");
+
+          if (descricao.isNotEmpty) {
             lista.editarTarefa(index, descricao);
             print('Tarefa editada com sucesso!');
           } else {
