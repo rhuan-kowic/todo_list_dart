@@ -15,11 +15,16 @@ class Tarefa {
     _concluida = false;
   }
 
+  void setDescricao(String descricao) {
+    _descricao = descricao;
+  }
+
+  String getDescricao() {
+    return _descricao;
+  }
+
   @override
   String toString() {
-    return {
-      "Tarefa": _descricao,
-      "IsCompleta": "${_concluida ? "Sim" : "Não"}",
-    }.toString();
+    return 'Tarefa: $_descricao | Concluída: ${_concluida ? "Sim" : "Não"}';
   }
 }
