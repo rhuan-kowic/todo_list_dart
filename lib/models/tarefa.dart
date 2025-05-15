@@ -1,25 +1,25 @@
 class Tarefa {
-  String _tafera = "";
-  bool _isCompleta = false;
+  String _descricao = "";
+  bool _concluida = false;
 
-  void setTafera(String tafera) {
-    _tafera = tafera;
+  Tarefa({required descricao, concluida = false}) {
+    _descricao = descricao;
+    _concluida = concluida;
   }
 
-  String getTarefa() {
-    return _tafera;
+  void marcarComoConcluida() {
+    _concluida = true;
   }
 
-  void setIsCompleta(bool isCompleta) {
-    _isCompleta = isCompleta;
-  }
-
-  bool getIsCompleta() {
-    return _isCompleta;
+  void marcarComoPendente() {
+    _concluida = false;
   }
 
   @override
   String toString() {
-    return {"Tarefa": _tafera, "IsCompleta": _isCompleta.toString()}.toString();
+    return {
+      "Tarefa": _descricao,
+      "IsCompleta": "${_concluida ? "Sim" : "Não"}",
+    }.toString();
   }
 }
